@@ -7,6 +7,7 @@ public class EnemyFollow : MonoBehaviour
     Rigidbody2D rb;
     public Transform target;
     Vector2 moveDirection;
+    bool FollowPlayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
