@@ -10,7 +10,7 @@ public class Interactor : MonoBehaviour
 
     public IInteractable _currentInteractable;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // Intentamos obtener la interfaz del objeto que tocamos
         if (other.TryGetComponent(out IInteractable interactable))
@@ -33,15 +33,21 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         // Si el objeto que sale es el que teníamos guardado, limpiamos la referencia
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            if (_currentInteractable != null)
+            {
+                _currentInteractable.Release();
+            }
+
             if (_currentInteractable == interactable)
             {
                 _currentInteractable = null;
             }
         }
     }
+
 }

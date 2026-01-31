@@ -1,8 +1,15 @@
 using UnityEngine;
+using TMPro;
 
 public class BaseNPC : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public string[] dialogos;
+    public GameObject canvasDialogo;
+    public TMP_Text componenteTexto;
+
+    private bool _yaSeUso = false;
+
     void Start()
     {
         
@@ -17,6 +24,13 @@ public class BaseNPC : MonoBehaviour, IInteractable
     public void Touch()
     {
         Debug.Log("¡Tocaste el objeto!");
+        //if (_yaSeUso) return;
+
+        if (dialogos != null && dialogos.Length > 0)
+        {
+            canvasDialogo.SetActive(true); // Encendemos el UI
+            componenteTexto.text = dialogos[0];
+        }
     }
 
     public void Interact()
@@ -24,4 +38,10 @@ public class BaseNPC : MonoBehaviour, IInteractable
         Debug.Log("¡Interactuaste con el objeto presionando E!");
     }
 
+    public void Release()
+    {
+        Debug.Log("¡NPC fuera de rango");
+        canvasDialogo.SetActive(false);
+        _yaSeUso = true;
+    }
 }
