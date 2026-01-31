@@ -1,13 +1,15 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BaseNPC : MonoBehaviour, IInteractable
 {
 
     public string[] dialogos;
     public GameObject canvasDialogo;
-    public TMP_Text componenteTexto;
+    //public TMP_Text componenteTexto;
 
+    public Text DialogText;
     //private bool _yaSeUso = false;
 
     void Start()
@@ -29,7 +31,7 @@ public class BaseNPC : MonoBehaviour, IInteractable
         if (dialogos != null && dialogos.Length > 0)
         {
             canvasDialogo.SetActive(true); // Encendemos el UI
-            componenteTexto.text = dialogos[0];
+            DialogText.text = dialogos[0];
         }
     }
 
