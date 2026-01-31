@@ -3,11 +3,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
-
     private Rigidbody2D rb;
-
     public Animator animator;
 
+    public Interactor interactor;
     Vector2 movement;
     void Start()
     {
@@ -16,6 +15,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Si hay un objeto en rango y presionamos E
+        if (interactor._currentInteractable != null && Input.GetKeyDown(KeyCode.E))
+        {
+            interactor._currentInteractable.Interact();
+        }
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized * movementSpeed * Time.fixedDeltaTime);
+        //rb.MovePosition(rb.position + movement.normalized * movementSpeed * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector2(movement.x * movementSpeed, movement.y * movementSpeed);
     }
 }
