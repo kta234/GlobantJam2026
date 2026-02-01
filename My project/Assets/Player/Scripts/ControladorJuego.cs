@@ -49,4 +49,6 @@ public class ControladorJuego : MonoBehaviour
     {
         CambiarTemporizador(false);
     }
+
+
 }

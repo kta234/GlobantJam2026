@@ -1,20 +1,27 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
     private Rigidbody2D rb;
     public Animator animator;
-
     public Interactor interactor;
     Vector2 movement;
+    // Variable que indica si el juego está en pausa
+    private bool isPaused = false;
+    public GameObject menuPausa;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
     {
+
+
+
         // Si hay un objeto en rango y presionamos E
         if (interactor._currentInteractable != null && Input.GetKeyDown(KeyCode.E))
         {
@@ -35,4 +42,6 @@ public class PlayerController : MonoBehaviour
         //rb.MovePosition(rb.position + movement.normalized * movementSpeed * Time.fixedDeltaTime);
         rb.linearVelocity = new Vector2(movement.x * movementSpeed, movement.y * movementSpeed);
     }
+
+
 }
