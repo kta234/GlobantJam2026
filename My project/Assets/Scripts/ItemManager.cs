@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager Instance;
+    public string nombreEscenaGameWin = "GameWin";
 
     public int puntosParaGanar = 4;
     public AudioSource audioVictoria;
@@ -25,6 +27,7 @@ public class ItemManager : MonoBehaviour
         if (_puntosActuales >= puntosParaGanar)
         {
             Ganar();
+            SceneManager.LoadScene(nombreEscenaGameWin);
         }
     }
 
