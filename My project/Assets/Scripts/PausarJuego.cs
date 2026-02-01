@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,5 +50,17 @@ public class PausarJuego : MonoBehaviour
         Debug.Log("Menu principal");
         SceneManager.LoadScene("Menu");
     }
+    public void QuitGame()
+    {
+        // Verificamos si estamos en el Editor de Unity
+#if UNITY_EDITOR
+        // Si estamos en el editor, detenemos la ejecución del juego
+        EditorApplication.isPlaying = false;
+#else
+            // Si estamos en la compilación, salimos del juego
+            Application.Quit();
+#endif
+    }
+    
 
 }
