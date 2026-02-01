@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ControladorJuego : MonoBehaviour
 {
+    private AudioSource music;
+
     [SerializeField] private float tiempoMaximo;
     [SerializeField] private Slider slider;
+    [SerializeField] private Musica traerSonido;
     private float tiempoActual;
     private bool tiempoActivo = false;
 
     private void Start()
     {
         ActivarTemporizador();
+
     }
     private void Update()
     {
@@ -27,10 +32,16 @@ public class ControladorJuego : MonoBehaviour
             slider.value = tiempoActual;
         }
 
+
         if(tiempoActual <=0)
         {
             Debug.Log("derrota");
+            Debug.Log("------");
             CambiarTemporizador(false);
+            Debug.Log("LINEA 41");
+            traerSonido.GameOverAudioOn();
+            Debug.Log("LINEA 43");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -49,6 +60,5 @@ public class ControladorJuego : MonoBehaviour
     {
         CambiarTemporizador(false);
     }
-
 
 }
