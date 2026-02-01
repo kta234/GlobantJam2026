@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemRecolectable : MonoBehaviour
+public class ItemRecolectable : MonoBehaviour, IInteractable
 {
     [Header("Configuración de Recolección")]
     public GameObject objetoAActivar;
@@ -13,16 +13,15 @@ public class ItemRecolectable : MonoBehaviour
     // Se ejecuta cuando el Interactor entra en el Collider
     public void Touch()
     {
+        Debug.Log("Objeto recolectado mediante interacción.");
+
+        /*
         if (indicadorVisual != null)
         {
             indicadorVisual.SetActive(true);
             Debug.Log("Cerca del objeto. Presiona E para recoger.");
         }
-    }
-
-    // Se ejecuta cuando el usuario presiona "E"
-    public void Interact()
-    {
+        */
         // 1. Sumar punto al GameManager
         if (ItemManager.Instance != null)
         {
@@ -45,6 +44,12 @@ public class ItemRecolectable : MonoBehaviour
 
         // 4. ¡Adiós!
         Destroy(gameObject);
+    }
+
+    // Se ejecuta cuando el usuario presiona "E"
+    public void Interact()
+    {
+
     }
 
     // Se ejecuta cuando el Interactor sale del Collider

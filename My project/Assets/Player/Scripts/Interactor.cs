@@ -1,5 +1,15 @@
 using UnityEngine;
 
+
+public enum ColisionText
+{
+    None = 0,
+    Option1 = 1,
+    Option2 = 2,
+    Option3 = 4,
+    Option4 = 8
+}
+
 public class Interactor : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
