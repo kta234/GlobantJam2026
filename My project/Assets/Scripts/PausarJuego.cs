@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PausarJuego : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class PausarJuego : MonoBehaviour
             menuPausa.SetActive(isPaused);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    public void LoadMenuPrincipal()
+    {
+        Debug.Log("Menu principal");
+        SceneManager.LoadScene("Menu");
+    }
 
 }
