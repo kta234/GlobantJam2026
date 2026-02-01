@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -0.787, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.8009, y: -423}
+  m_AnchoredPosition: {x: 8.8009, y: -388}
   m_SizeDelta: {x: 179.5, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158401
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   clickAudio: {fileID: 8300000, guid: 8ac4331731fbaac408ee626226e48420, type: 3}
   switchAudio: {fileID: 8300000, guid: e53f116b1b3bf1345ac6a32c3b184972, type: 3}
   GameOverAudio: {fileID: 0}
-  fondoAudio: {fileID: 0}
+  fondoAudio: {fileID: 8300000, guid: 05272a6c916dd144db4301a74ede1ba7, type: 3}
 --- !u!1 &698239954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 69}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &941751959
