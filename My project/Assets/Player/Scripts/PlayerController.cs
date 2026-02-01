@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    private bool isPaused = false;
+    //private bool isPaused = false;
 
     void Start()
     {

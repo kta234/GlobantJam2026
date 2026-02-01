@@ -14,7 +14,7 @@ public class BaseNPC : MonoBehaviour, IInteractable
 
     void Start()
     {
-        int holi = 0;
+        //int holi = 0;
     }
 
     // Update is called once per frame
