@@ -30,6 +30,7 @@ public class SafeZone : MonoBehaviour
 
             // Desactivamos el seguimiento en todos los enemigos
             SetEnemiesFollow(false);
+            SetEnemiesFollowEmbestida(false);
         }
     }
 
@@ -51,11 +52,23 @@ public class SafeZone : MonoBehaviour
 
         // Si pasaron los 2 segundos sin interrupción, activamos a los enemigos
         SetEnemiesFollow(true);
+        SetEnemiesFollowEmbestida(true);
         _resetCoroutine = null;
     }
     private void SetEnemiesFollow(bool state)
     {
         foreach (EnemyFollow enemy in EnemyFollow.AllEnemies)
+        {
+            if (enemy != null)
+            {
+                enemy.CanFollowPlayer = state;
+            }
+        }
+        Debug.Log(state ? "Enemigos persiguiendo" : "Enemigos en pausa (Zona Segura)");
+    }
+    private void SetEnemiesFollowEmbestida(bool state)
+    {
+        foreach (EnemyEmbestida enemy in EnemyEmbestida.AllEnemies)
         {
             if (enemy != null)
             {
