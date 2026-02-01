@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   movementSpeed: 5
-  animator: {fileID: 0}
+  animator: {fileID: 2102401849489339903}
   interactor: {fileID: 1190537398710709910}
   menuPausa: {fileID: 0}
 --- !u!95 &2102401849489339903
