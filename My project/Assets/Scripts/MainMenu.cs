@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +18,17 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
     }
+
     public void QuitGame()
     {
-        Application.Quit();
+        // Verificamos si estamos en el Editor de Unity
+#if UNITY_EDITOR
+        // Si estamos en el editor, detenemos la ejecución del juego
+        EditorApplication.isPlaying = false;
+#else
+            // Si estamos en la compilación, salimos del juego
+            Application.Quit();
+#endif
     }
     public void PlayGame()
     {
