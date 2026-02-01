@@ -2608,7 +2608,7 @@ MonoBehaviour:
   clickAudio: {fileID: 8300000, guid: 8ac4331731fbaac408ee626226e48420, type: 3}
   switchAudio: {fileID: 8300000, guid: e53f116b1b3bf1345ac6a32c3b184972, type: 3}
   GameOverAudio: {fileID: 8300000, guid: af0f2ffc723149c46b3357e2c431bc13, type: 3}
-  fondoAudio: {fileID: 8300000, guid: 51e2a0e8855fad94a8e7fda67b035d28, type: 3}
+  fondoAudio: {fileID: 8300000, guid: ddc808a6714bf8b4bb8e563f88b25ff6, type: 3}
 --- !u!82 &169148505
 AudioSource:
   m_ObjectHideFlags: 0
