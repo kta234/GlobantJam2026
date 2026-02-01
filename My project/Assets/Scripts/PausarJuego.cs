@@ -47,6 +47,7 @@ public class PausarJuego : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void LoadMenuPrincipal()
     {
+        TogglePause();
         Debug.Log("Menu principal");
         SceneManager.LoadScene("Menu");
     }
