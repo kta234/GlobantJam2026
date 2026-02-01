@@ -27,7 +27,9 @@ public class Musica : MonoBehaviour
     }
     public void musicfondoOn()
     {
-        music.PlayOneShot(fondoAudio);
+        music.clip = fondoAudio; // asigna el clip
+        music.loop = true;       // loop infinito
+        music.Play();            // reproduce
     }
     public void musicOff()
     {
