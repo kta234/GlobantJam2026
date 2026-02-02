@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +13,25 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    //private bool isPaused = false;
+    private InputSystem_Actions inputActions;
+
+    void Awake()
+    {
+        // Inicializar el Input System
+        inputActions = new InputSystem_Actions();
+    }
+
+    void OnEnable()
+    {
+        // Habilitar las acciones del jugador
+        inputActions.Player.Enable();
+    }
+
+    void OnDisable()
+    {
+        // Deshabilitar las acciones del jugador
+        inputActions.Player.Disable();
+    }
 
     void Start()
     {
@@ -24,13 +43,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 1. Obtener Input (8 direcciones)
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // 1. Obtener Input (8 direcciones) usando el nuevo Input System
+        movement = inputActions.Player.Move.ReadValue<Vector2>();
 
         // 2. Lógica de Interacción (Presionando E)
-        // Nota: Asegúrate de que '_currentInteractable' sea público en tu clase Interactor
-        if (interactor != null && interactor._currentInteractable != null && Input.GetKeyDown(KeyCode.E))
+        if (interactor != null && interactor._currentInteractable != null && inputActions.Player.Interact.triggered)
         {
             interactor._currentInteractable.Interact();
         }
@@ -75,7 +92,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Vertical", movement.y);
 
             // Usamos la magnitud para la transición Idle -> Walk
-            // Usamos el vector sin normalizar para que 'Speed' sea 0 cuando no hay inpu
+            // Usamos el vector sin normalizar para que 'Speed' sea 0 cuando no hay input
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
     }

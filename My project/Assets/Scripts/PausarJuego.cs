@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PausarJuego : MonoBehaviour
@@ -8,6 +9,31 @@ public class PausarJuego : MonoBehaviour
     // Variable que indica si el juego está en pausa
     private bool isPaused = false;
     public GameObject menuPausa;
+    private InputSystem_Actions inputActions;
+
+    void Awake()
+    {
+        // Inicializar el Input System
+        inputActions = new InputSystem_Actions();
+    }
+
+    void OnEnable()
+    {
+        // Habilitar las acciones de UI
+        inputActions.UI.Enable();
+        
+        // Suscribirse al evento de cancelar (Escape)
+        inputActions.UI.Cancel.performed += OnPausePressed;
+    }
+
+    void OnDisable()
+    {
+        // Desuscribirse del evento
+        inputActions.UI.Cancel.performed -= OnPausePressed;
+        
+        // Deshabilitar las acciones de UI
+        inputActions.UI.Disable();
+    }
 
     void Start()
     {
@@ -17,17 +43,12 @@ public class PausarJuego : MonoBehaviour
         menuPausa.SetActive(false);
     }
 
-    private void Update()
+    private void OnPausePressed(InputAction.CallbackContext context)
     {
-        // Detecta si el jugador presiona la tecla Escape
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-        {
-
-            TogglePause();
-            Debug.Log("escape");
-        }
-
+        TogglePause();
+        Debug.Log("escape");
     }
+
 
 
 
